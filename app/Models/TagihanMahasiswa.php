@@ -54,6 +54,7 @@ class TagihanMahasiswa extends Model
 		$builder->select([
 			"{$this->table}.nim_mahasiswa",
 			"{$this->table}.id_tagihan",
+			"mahasiswa.email",
 			"mahasiswa.nama",
 			"mahasiswa.semester as mahasiswa_semester",
 			"tagihan.semester as tagihan_semester",
@@ -66,6 +67,7 @@ class TagihanMahasiswa extends Model
 
 		if( $token != null ) {
 			$builder->where( "{$this->table}.nim_mahasiswa", $token );
+			$builder->orWhere( "mahasiswa.email", $token );
 		}
 
 		$builder->join( "mahasiswa", "mahasiswa.nim = {$this->table}.nim_mahasiswa" );

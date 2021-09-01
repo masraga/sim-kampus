@@ -14,6 +14,10 @@ class Tagihan extends ResourceController
 	{
 		$token = $this->request->getGet( "token" );
 
+		if( $this->request->getGet( "use-email" ) ) {
+			$token = session()->get( "token" );
+		}
+
 		if( isset( $token ) )
 			return $this->respond( TagihanManager::mahasiswa( $token ) );
 		

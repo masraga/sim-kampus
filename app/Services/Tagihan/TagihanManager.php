@@ -31,7 +31,7 @@ class TagihanManager
 	public static function mahasiswa( $token = null )
 	{
 		$instance = FinancialRecord::getInstance();
-
+		
 		return $instance->setToken( $token )->list( $token );
 	}
 
