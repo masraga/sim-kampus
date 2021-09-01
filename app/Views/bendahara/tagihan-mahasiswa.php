@@ -35,14 +35,19 @@
           <a href="" class="btn btn-danger">Tambah Tagihan</a>
           <br>
           <br>
-          <table class="table table-bordered" id="table-tagihan">
+          <table class="table" border="1" id="table-tagihan">
             <thead>
               <tr>
                 <th>Jenis Tagihan</th>
                 <th>Jumlah</th>
                 <th>Batas waktu pembayaran</th>
+                <th>Lunas</th>
+                <th>Action</th>
               </tr>
             </thead>
+            <tbody>
+              
+            </tbody>
           </table>
         </div>
       </div>
@@ -53,13 +58,12 @@
 
 <?php $this->section( "custom-js" ) ?>
   <script type="text/javascript">
+    const query = new URLSearchParams(window.location.search);
+    const nim = query.get('nim');
+
     // get data mahasiswa
     function getMahasiswa()
     {
-
-      const query = new URLSearchParams(window.location.search);
-      const nim = query.get('nim');
-
       fetch(`${BASE_URL}/api/mahasiswa?token=${nim}`)
       .then( response => response.json() )
       .then( response => {
@@ -74,8 +78,53 @@
         }
       } )
     }
+
+    // mengambil list data tagihan mahasiswa
+    function getTagihan()
+    {
+      fetch( `${BASE_URL}/api/mahasiswa/tagihan?token=${nim}` )
+      .then( response => response.json() )
+      .then( response => {
+        for( let dataset of response.data ){
+
+          let lunasEl = "";
+
+          if( response.data.is_lunas ) {
+            lunasEl = `<div class="text-success font-weight-bold">Lunas</div>`
+          }
+          else {
+            lunasEl = `<div class="text-danger font-weight-bold">Belum</div>`
+          }
+
+          $("#table-tagihan > tbody").append(`
+            <tr>
+              <td>${dataset.jenis_tagihan}</td>
+              <td>${dataset.jumlah_tagihan}</td>
+              <td>${dataset.tanggal_batas}</td>
+              <td>${lunasEl}</td>
+              <td>
+                <a href="javascript:void(0)" id="btn-hapus-tagihan" id-tagihan="${dataset.id_tagihan}" class="btn btn-danger">Hapus</a>
+                <a href="${BASE_URL}/bendahara/mahasiswa/tagihan/edit?token=${dataset.nim_mahasiswa}&bill=${dataset.id_tagihan}" class="btn btn-warning">Edit</a>
+              </td>
+            </tr>
+          `);
+        }
+
+        $( document ).on( "click", "#btn-hapus-tagihan", function(e){
+          e.preventDefault();
+
+          const id       = $(this).attr(`id-tagihan`);
+          const redirect = `${BASE_URL}/api/bendahara/tagihan/mahasiswa/${id}/delete`;
+
+          if( confirm( "Hapus tagihan ini ?" ) ) {
+            window.location = redirect;
+          }
+        } )
+      } )
+    }
     $(document).ready( function(e) {
       getMahasiswa();
+      getTagihan();
     } )
   </script>
 <?php $this->endSection() ?>
