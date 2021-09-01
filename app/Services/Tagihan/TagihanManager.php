@@ -34,6 +34,18 @@ class TagihanManager
 
 		return $instance->setToken( $token )->list( $token );
 	}
+
+	/**
+	 * menghapus data tagihan mahasiswa
+	 *
+	 * @param number $tagihan id tagihan
+	 */
+	public static function delete( $tagihan )
+	{
+		$instance = FinancialRecord::getInstance();
+
+		return $instance->delete( $tagihan );
+	}
 }
 
 ?>
