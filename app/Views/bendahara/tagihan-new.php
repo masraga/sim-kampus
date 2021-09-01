@@ -10,10 +10,19 @@
           </div>
 
           <div class="section-body">
-            <form method="post" id="form-tambah-tagihan">
+
+            <?php if( session()->getFlashdata("alert-msg") ): ?>
+              <?php if( session()->getFlashdata( "alert-code" ) == 200 ): ?>
+                <div class="alert alert-success"><?php echo session()->getFlashdata("alert-msg") ?></div>
+              <?php else : ?>
+                <div class="alert alert-danger"><?php echo session()->getFlashdata("alert-msg") ?></div>
+              <?php endif; ?>
+            <?php endif; ?>
+
+            <form method="post" action="<?php echo base_url("/api/mahasiswa/tagihan/new") ?>" id="form-tambah-tagihan">
               <div class="form-group">
                 <label for="nim-list">Nim - Nama</label>
-                <select class="form-control" id="nim-list">
+                <select class="form-control" name="nim" id="nim-list">
                 </select>
               </div>
 
