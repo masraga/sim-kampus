@@ -9,6 +9,13 @@ class Mahasiswa extends ResourceController
 {
 	public function list()
 	{
-		return $this->respond( MahasiswaManager::list() );
+		if( $this->request->getGet( "use-email" ) ) {
+			$queryString = [
+				"user_email" => session()->get( "token" ),
+				"user_nim"	 => $this->request->getGet( "nim" )
+			];
+		}
+
+		return $this->respond( MahasiswaManager::list( $queryString ) );
 	}
 }

@@ -28,15 +28,18 @@ class User {
 	/**
 	 * Menampilkan data mahasiswa
 	 * 
-	 * @param  string $id nim mahasiswa
+	 * @param  array $queryString
 	 * @return array
 	 */
-	public function list( $id = null )
+	public function list( $queryString )
 	{
-		if( $id == null )
+		if( count( $queryString ) == 0 )
 			return $this->mahasiswa->findAll();
 
-		return $this->mahasiswa->find( [ "nim" => $id ] );
+		if( isset( $queryString["user_nim"] ) )
+			return $this->mahasiswa->where( [ "nim" => $queryString["user_nim"] ] )->first();
+		if( isset( $queryString["user_email"] ) )
+			return $this->mahasiswa->where( [ "email" => $queryString["user_email"] ] )->first();
 	}
 }
 

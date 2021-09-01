@@ -8,13 +8,14 @@ class MahasiswaManager
 
 	/**
 	 * menampilkan data mahasiswa
+	 *
+	 * @param array $queryString
 	 */
-	public static function list()
+	public static function list( array $queryString = [] )
 	{
-		$user_nim = $_GET["token"] ?? null;
 		$user_instance = User::get_instance();
 
-		return $user_instance->list( $user_nim );		
+		return $user_instance->list( $queryString );		
 	}
 }
 
