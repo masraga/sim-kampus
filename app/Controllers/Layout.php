@@ -45,4 +45,12 @@ class Layout extends BaseController
 	{
 		return view( "bendahara/tagihan-new" );
 	}
+
+	/**
+	 * menampilkan halaman home mahasiswa
+	 */
+	public function mahasiswa_home()
+	{
+		return view( "mahasiswa/home" );
+	}
 }
