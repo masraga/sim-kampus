@@ -25,8 +25,8 @@ class Authenticate
 	private function userData()
 	{
 		$user  	  = new User();
-		$where 	  = [ "username" => $this->username, "password" => $this->password ];
-		$dataset  = $user->find($where);
+		$where 	  = [ "email" => $this->username, "password" => $this->password ];
+		$dataset  = $user->where($where)->find();
 		$is_user  = count( $dataset ) > 0;
 
 		return [ "is_user" => $is_user, "data" => $dataset ];
