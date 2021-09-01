@@ -33,6 +33,24 @@ class Authenticate
 	}	
 
 	/**
+	 * set user email
+	 */
+	public function setEmail( $email )
+	{
+		$this->username = $email;
+		return $this;
+	}
+
+	/**
+	 * set user password
+	 */
+	public function setPassword( $pass )
+	{
+		$this->password = sha1( $pass );
+		return $this;
+	}
+
+	/**
 	 * autentikasi user
 	 * 
 	 * @param  $username username 
