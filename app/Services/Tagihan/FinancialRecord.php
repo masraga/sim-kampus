@@ -2,6 +2,7 @@
 namespace App\Services\Tagihan;
 
 use App\Models\TagihanMahasiswa;
+use App\Models\Tagihan;
 
 /**
  * class untuk melihat catatan keuangan
@@ -24,9 +25,16 @@ class FinancialRecord
 	 */
 	private $mahasiswa = null;
 
+	/**
+	 * model tagihan
+	 * @var null
+	 */
+	private $tagihan = null;
+
 	public function __construct()
 	{
 		$this->mahasiswa = new TagihanMahasiswa;
+		$this->tagihan   = new Tagihan;
 	}
 
 	public static function getInstance()
@@ -90,6 +98,29 @@ class FinancialRecord
 	private function getAllInfo()
 	{
 
+	}
+
+	/**
+	 * menghapus data tagihan mahasiswa
+	 * 
+	 * @param  number $tagihan id tagihan
+	 */
+	public function delete( $tagihan )
+	{
+		try {
+			$this->tagihan->delete( $tagihan );
+
+			return [
+				"code" 	=> 200, 
+				"msg"	=> "Berhasil menghapus data tagihan"
+			];
+		}
+		catch( \Exception $e ) {
+			return [
+				"code" 	=> 500, 
+				"msg"	=> "Terjadi kesalahan saat menghapus tagihan"
+			];
+		}
 	}
 
 	/**
