@@ -32,7 +32,7 @@
             <?php endif; ?>
           <?php endif; ?>
 
-          <a href="" class="btn btn-danger">Tambah Tagihan</a>
+          <a href="<?php echo base_url("/bendahara/tagihan/new") ?>" class="btn btn-danger">Tambah Tagihan</a>
           <br>
           <br>
           <table class="table" border="1" id="table-tagihan">
