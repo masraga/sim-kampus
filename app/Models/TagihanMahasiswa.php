@@ -39,4 +39,38 @@ class TagihanMahasiswa extends Model
 	protected $afterFind            = [];
 	protected $beforeDelete         = [];
 	protected $afterDelete          = [];
+
+	/**
+	 * mengambil data tagihan mahasiswa
+	 * 
+	 * @param  string $token nim mahasiswa
+	 * 
+	 * @return array 
+	 */
+	public function getInfo( $token = null )
+	{
+		$builder = $this->db->table( $this->table );
+
+		$builder->select([
+			"{$this->table}.nim_mahasiswa",
+			"{$this->table}.id_tagihan",
+			"mahasiswa.nama",
+			"mahasiswa.semester as mahasiswa_semester",
+			"tagihan.semester as tagihan_semester",
+			"tagihan.jenis as jenis_tagihan",
+			"tagihan.jumlah as jumlah_tagihan",
+			"tagihan.tanggal_dibuat",
+			"tagihan.tanggal_batas",
+			"tagihan.is_lunas",
+		]);
+
+		if( $token != null ) {
+			$builder->where( "{$this->table}.nim_mahasiswa", $token );
+		}
+
+		$builder->join( "mahasiswa", "mahasiswa.nim = {$this->table}.nim_mahasiswa" );
+		$builder->join( "tagihan", "tagihan.id = {$this->table}.id_tagihan" );
+		
+		return $builder->get()->getResultArray();
+	}
 }
