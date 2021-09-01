@@ -19,4 +19,19 @@ class Tagihan extends ResourceController
 		
 		return $this->respond( TagihanManager::mahasiswa() );
 	}
+
+	/**
+	 * menghapus data tagihan mahasiswa
+	 *
+	 * @param string $tagihan 	id tagihan
+	 * @param string $token 	nim mahasiswa
+	 */
+	public function delete_tagihan( $tagihan, $token )
+	{
+		$tagihan = TagihanManager::delete( $tagihan );
+
+		session()->setFlashdata( "alert-msg", $tagihan["msg"] );
+		session()->setFlashdata( "alert-code", $tagihan["code"] );
+		return redirect()->to( site_url("/bendahara/tagihan/mahasiswa?nim={$token}") );
+	}
 }
