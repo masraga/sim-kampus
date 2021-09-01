@@ -103,8 +103,16 @@
               <td>${dataset.tanggal_batas}</td>
               <td>${lunasEl}</td>
               <td>
-                <a href="javascript:void(0)" id="btn-hapus-tagihan" id-tagihan="${dataset.id_tagihan}" class="btn btn-danger">Hapus</a>
-                <a href="${BASE_URL}/bendahara/mahasiswa/tagihan/edit?token=${dataset.nim_mahasiswa}&bill=${dataset.id_tagihan}" class="btn btn-warning">Edit</a>
+                <a 
+                  href="javascript:void(0)" 
+                  id="btn-hapus-tagihan" 
+                  id-tagihan="${dataset.id_tagihan}"
+                  nim-mahasiswa="${dataset.nim_mahasiswa}"
+                  class="btn btn-danger">Hapus</a>
+
+                <a 
+                  href="${BASE_URL}/bendahara/mahasiswa/tagihan/edit?token=${dataset.nim_mahasiswa}&bill=${dataset.id_tagihan}" 
+                  class="btn btn-warning">Edit</a>
               </td>
             </tr>
           `);
@@ -113,8 +121,9 @@
         $( document ).on( "click", "#btn-hapus-tagihan", function(e){
           e.preventDefault();
 
-          const id       = $(this).attr(`id-tagihan`);
-          const redirect = `${BASE_URL}/api/bendahara/tagihan/mahasiswa/${id}/delete`;
+          const token     = $(this).attr(`nim-mahasiswa`);
+          const tagihan   = $(this).attr(`id-tagihan`);
+          const redirect  = `${BASE_URL}/api/bendahara/tagihan/${tagihan}/mahasiswa/${token}/delete`;
 
           if( confirm( "Hapus tagihan ini ?" ) ) {
             window.location = redirect;
