@@ -23,6 +23,15 @@
           </table>
         </div>
         <div class="card-body">
+
+          <?php if( session()->getFlashdata("alert-msg") ): ?>
+            <?php if( session()->getFlashdata( "alert-code" ) == 200 ): ?>
+              <div class="alert alert-success"><?php echo session()->getFlashdata("alert-msg") ?></div>
+            <?php else : ?>
+              <div class="alert alert-danger"><?php echo session()->getFlashdata("alert-msg") ?></div>
+            <?php endif; ?>
+          <?php endif; ?>
+
           <a href="" class="btn btn-danger">Tambah Tagihan</a>
           <br>
           <br>
