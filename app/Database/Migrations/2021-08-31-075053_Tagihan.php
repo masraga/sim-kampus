@@ -15,6 +15,10 @@ class Tagihan extends Migration
 				"constraint" => 3,
 				"auto_increment" => true
 			],
+			"semester" => [
+				"type" => "varchar",
+				"constraint" => 2,
+			],
 			"jenis" => [
 				"type" => "varchar",
 				"constraint" => 30,
