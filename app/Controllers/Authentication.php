@@ -33,6 +33,10 @@ class Authentication extends BaseController
 				}
 			} 
 		}
+		else {
+			session()->setFlashdata( "unauthorized", $auth["msg"] );
+			return redirect()->to( site_url() );
+		}
 	}
 
 	/**
