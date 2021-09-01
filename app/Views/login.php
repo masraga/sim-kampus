@@ -29,7 +29,9 @@
 
             <div class="card card-primary">
               <div class="card-header"><h4>Login</h4></div>
-
+              <?php if( session()->getFlashdata("unauthorized") ): ?>
+                <p class="text-danger text-center center"><?php echo session()->getFlashdata("unauthorized"); ?></p>
+              <?php endif; ?>
               <div class="card-body">
                 <form class="needs-validation" novalidate="" method="post" action="<?php echo base_url('/auth') ?>">
                   <div class="form-group">
