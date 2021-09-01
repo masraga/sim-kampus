@@ -2,6 +2,7 @@
 namespace App\Services\Tagihan;
 
 use App\Services\Tagihan\Generator;
+use App\Services\Tagihan\FinancialRecord;
 
 class TagihanManager
 {
@@ -20,6 +21,18 @@ class TagihanManager
 		}
 
 		return $instance->generate();
+	}
+
+	/**
+	 * mengambil data tagihan mahasiswa
+	 * @param  string $token nim mahasiswa
+	 * @return array
+	 */
+	public static function mahasiswa( $token = null )
+	{
+		$instance = FinancialRecord::getInstance();
+
+		return $instance->setToken( $token )->list( $token );
 	}
 }
 
