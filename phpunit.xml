@@ -36,6 +36,9 @@
 		<testsuite name="Financial">
 			<directory suffix=".php">./tests/app/Services/FinancialRecord</directory>
 		</testsuite>
+		<testsuite name="MahasiswaData">
+			<directory suffix=".php">./tests/app/Services/MahasiswaData</directory>
+		</testsuite>
 	</testsuites>
 	<logging>
 		<testdoxHtml outputFile="build/logs/testdox.html"/>
