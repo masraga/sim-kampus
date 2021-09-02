@@ -16,7 +16,7 @@ class Tagihan extends BaseController
 		
 		if( $tagihan["code"] == 200  ) {
 			$tokenMahasiswa = $tagihan["data"]["nim"];
-			return redirect()->to( site_url( "/bendahara/tagihan/mahasiswa?token={$tokenMahasiswa}" ) );
+			return redirect()->to( site_url( "/bendahara/tagihan/mahasiswa?nim={$tokenMahasiswa}" ) );
 		}
 
 		return redirect()->to( site_url( "/bendahara/tagihan/new" ) );
