@@ -3,6 +3,7 @@ namespace App\Services\Tagihan;
 
 use App\Services\Tagihan\Generator;
 use App\Services\Tagihan\FinancialRecord;
+use App\Services\Tagihan\Bill;
 
 class TagihanManager
 {
@@ -45,6 +46,17 @@ class TagihanManager
 		$instance = FinancialRecord::getInstance();
 
 		return $instance->delete( $tagihan );
+	}
+
+	/**
+	 * bayar tagihan tiap mahasiswa
+	 * @param  array $tagihan data tagihan
+	 */
+	public static function pay( $tagihan )
+	{
+		$instance = Bill::getInstance();
+
+		return $instance->set( $tagihan )->pay();
 	}
 }
 

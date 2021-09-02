@@ -38,4 +38,12 @@ class Tagihan extends ResourceController
 		session()->setFlashdata( "alert-code", $tagihan["code"] );
 		return redirect()->to( site_url("/bendahara/tagihan/mahasiswa?nim={$token}") );
 	}
+
+	/**
+	 * bayar tagihan
+	 */
+	public function pay()
+	{
+		return $this->respond( TagihanManager::pay( $this->request->getPost() ) );
+	}
 }
