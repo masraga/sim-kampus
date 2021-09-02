@@ -40,6 +40,7 @@ $routes->get('/admin', 'Layout::admin_home');
 
 $routes->get('/bendahara', 'Layout::bendahara_home');
 $routes->get('/bendahara/tagihan/mahasiswa', 'Layout::bendahara_tagihan_mahasiswa');
+$routes->get('/bendahara/tagihan/mahasiswa/edit', 'Layout::bendahara_edit_tagihan_mahasiswa');
 $routes->get('/bendahara/tagihan/new', 'Layout::bendahara_tagihan_new');
 $routes->get('/api/bendahara/tagihan/(:any)/mahasiswa/(:any)/delete', 'Api\Tagihan::delete_tagihan/$1/$2');
 
@@ -48,6 +49,7 @@ $routes->get('/api/mahasiswa', 'Mahasiswa::list');
 $routes->get( "/api/mahasiswa/tagihan", "Api\Tagihan::mahasiswa" );
 $routes->post( "/api/mahasiswa/tagihan/new", "Tagihan::add" );
 $routes->post( "/api/mahasiswa/tagihan/bayar", "Api\Tagihan::pay" );
+$routes->post( "/api/mahasiswa/tagihan/update", "Tagihan::update" );
 
 
 /*
