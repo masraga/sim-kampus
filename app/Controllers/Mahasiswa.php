@@ -9,6 +9,8 @@ class Mahasiswa extends ResourceController
 {
 	public function list()
 	{
+		$queryString = [];
+
 		if( $this->request->getGet( "use-email" ) ) {
 			$queryString = [
 				"user_email" => session()->get( "token" ),
