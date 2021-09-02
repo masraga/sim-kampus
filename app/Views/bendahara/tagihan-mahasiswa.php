@@ -111,7 +111,7 @@
                   class="btn btn-danger">Hapus</a>
 
                 <a 
-                  href="${BASE_URL}/bendahara/mahasiswa/tagihan/edit?token=${dataset.nim_mahasiswa}&bill=${dataset.id_tagihan}" 
+                  href="${BASE_URL}/bendahara/tagihan/mahasiswa/edit?token=${dataset.nim_mahasiswa}&bill=${dataset.id_tagihan}" 
                   class="btn btn-warning">Edit</a>
               </td>
             </tr>
