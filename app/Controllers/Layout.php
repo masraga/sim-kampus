@@ -23,6 +23,22 @@ class Layout extends BaseController
 	}
 
 	/**
+	 * menampilkan home admin
+	 */
+	public function admin_mahasiswa()
+	{
+		return view( "admin/mahasiswa" );
+	}
+
+	/**
+	 * menampilkan data tagihan mahasiswa
+	 */
+	public function admin_tagihan_mahasiswa()
+	{
+		return view( "admin/tagihan-mahasiswa" );
+	}
+
+	/**
 	 * menampilkan home bendahara
 	 */
 	public function bendahara_home()

@@ -1,6 +1,6 @@
 <?php $this->extend( "templates/default-layout" ) ?>
 <?php $this->section( "content" ) ?>
-<?php echo $this->include( "bendahara/templates/sidebar" ) ?>
+<?php echo $this->include( "admin/templates/sidebar" ) ?>
 <div class="main-content">
   <section class="section">
     <div class="section-header">

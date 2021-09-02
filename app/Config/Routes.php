@@ -37,6 +37,8 @@ $routes->get('/logout', 'Authentication::logout');
 $routes->post('/auth', 'Authentication::authenticate');
 
 $routes->get('/admin', 'Layout::admin_home');
+$routes->get('/admin/mahasiswa', 'Layout::admin_mahasiswa');
+$routes->get('/admin/tagihan/mahasiswa', 'Layout::admin_tagihan_mahasiswa');
 
 $routes->get('/bendahara', 'Layout::bendahara_home');
 $routes->get('/bendahara/tagihan/mahasiswa', 'Layout::bendahara_tagihan_mahasiswa');
