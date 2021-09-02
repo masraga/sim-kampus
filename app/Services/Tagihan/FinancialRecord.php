@@ -3,6 +3,7 @@ namespace App\Services\Tagihan;
 
 use App\Models\TagihanMahasiswa;
 use App\Models\Tagihan;
+use App\Services\Tagihan\ModifyRecord;
 
 /**
  * class untuk melihat catatan keuangan
@@ -143,6 +144,22 @@ class FinancialRecord
 			return $this->getPersonalInfo();
 
 		return $this->getAllInfo(); 
+	}
+
+	/**
+	 * update data keuangan
+	 */
+	public function update()
+	{
+		$modifyRecord = new ModifyRecord( array(
+			"nim" => $this->request["nim"],
+			"id_tagihan" 		=> $this->request["id_tagihan"],
+			"jenis_tagihan" 	=> $this->request["jenis"],
+			"jumlah_tagihan" 	=> preg_replace("/[^0-9]/", "", $this->request["jumlah"]),
+			"tanggal_batas" 	=> $this->request["tanggal_batas"],
+			"is_lunas" 			=> $this->request["is_lunas"],
+		) );
+		return $modifyRecord->run();
 	}
 }
 
