@@ -2,7 +2,7 @@
 
 ## Apa itu aplikasi sim kampus ?
 
-SIM kampus adalah aplikasi berbasis codeigniter 4, yang mana didalamnya terdapat beberapa fitur untuk menyelesaikan beberapa mahasalah kampus dengan cepat, contohnya mengisi data tagihan setiap mahasiswa tanpa harus mengetik ulang
+SIM kampus adalah aplikasi berbasis codeigniter 4, yang mana didalamnya terdapat beberapa fitur untuk menyelesaikan beberapa masalah kampus dengan cepat, contohnya mengisi data tagihan setiap mahasiswa tanpa harus mengetik ulang
 
 ## Instalasi & setup
 
