@@ -46,6 +46,11 @@ class Layout extends BaseController
 		return view( "bendahara/tagihan-new" );
 	}
 
+	public function bendahara_edit_tagihan_mahasiswa()
+	{
+		return view( "bendahara/tagihan-edit" );
+	}
+
 	/**
 	 * menampilkan halaman home mahasiswa
 	 */
