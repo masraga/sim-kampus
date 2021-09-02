@@ -30,16 +30,17 @@ SIM kampus adalah aplikasi berbasis codeigniter 4, yang mana didalamnya terdapat
 ## Pemakaian aplikasi
 Aplikasi ini pada dasarnya memiliki 3 role yaitu admin, bendahara, mahasiswa. Adapun beberapa user credential yang dapat digunakan adalah :
 
-**admin**
-email       : admin@gmail.com
-password    : admin
+**admin** <br>
+email       : admin@gmail.com <br>
+password    : admin <br>
 
 **bendahara**
-email       : bendahara@gmail.com
-password    : bendahara
+email       : bendahara@gmail.com <br>
+password    : bendahara <br>
 
-**mahasiswa**
-email       : real.ragamulia@gmail.com
-password    : raga
+**mahasiswa** <br>
+email       : real.ragamulia@gmail.com <br>
+password    : raga <br>
+
 
 **Note :** Jika kamu mengubah base url di sistem ci4 , maka kamu juga harus mensinkronkan base url baru tersebut di `public/url-helper.js`
