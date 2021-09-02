@@ -108,7 +108,12 @@ class FinancialRecord
 	 */
 	private function getAllInfo()
 	{
-
+		$tagihan = $this->mahasiswa->getInfo();
+		return [
+			"code" 	=> 200,
+			"msg"	=> "success",
+			"data"	=> $tagihan
+		];
 	}
 
 	/**
