@@ -58,6 +58,18 @@ class TagihanManager
 
 		return $instance->set( $tagihan )->pay();
 	}
+
+	/**
+	 * mengupdate data tagihan
+	 * 
+	 * @param  array 	$request 	data tagihan
+	 */
+	public static function update( $request )
+	{
+		$instance = FinancialRecord::getInstance();
+
+		return $instance->setRequest( $request )->update();
+	}
 }
 
 ?>
