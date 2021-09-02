@@ -89,7 +89,7 @@
 
           let lunasEl = "";
 
-          if( response.data.is_lunas ) {
+          if( Boolean( Number( dataset.is_lunas ) ) ) {
             lunasEl = `<div class="text-success font-weight-bold">Lunas</div>`
           }
           else {
