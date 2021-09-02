@@ -12,14 +12,19 @@ class Tagihan extends ResourceController
 	 */
 	public function mahasiswa()
 	{
-		$token = $this->request->getGet( "token" );
+		$request = array();
+		
+		$request[ "token" ] = $this->request->getGet( "token" );
 
 		if( $this->request->getGet( "use-email" ) ) {
-			$token = session()->get( "token" );
+			$request[ "token" ] = session()->get( "token" );
+		}
+		if( $this->request->getGet( "bill" ) ) {
+			$request[ "bill" ] = $this->request->getGet( "bill" );
 		}
 
-		if( isset( $token ) )
-			return $this->respond( TagihanManager::mahasiswa( $token ) );
+		if( ! empty( $request ) )
+			return $this->respond( TagihanManager::mahasiswa( $request ) );
 		
 		return $this->respond( TagihanManager::mahasiswa() );
 	}

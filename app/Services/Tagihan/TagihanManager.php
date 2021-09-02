@@ -26,14 +26,14 @@ class TagihanManager
 
 	/**
 	 * mengambil data tagihan mahasiswa
-	 * @param  string $token nim mahasiswa
+	 * @param  array $request
 	 * @return array
 	 */
-	public static function mahasiswa( $token = null )
+	public static function mahasiswa( array $request = [] )
 	{
 		$instance = FinancialRecord::getInstance();
 		
-		return $instance->setToken( $token )->list( $token );
+		return $instance->setRequest( $request )->list();
 	}
 
 	/**

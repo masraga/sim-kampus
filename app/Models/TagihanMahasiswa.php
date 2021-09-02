@@ -43,11 +43,13 @@ class TagihanMahasiswa extends Model
 	/**
 	 * mengambil data tagihan mahasiswa
 	 * 
-	 * @param  string $token nim mahasiswa
+	 * @param  array $request client request
+	 * - token 	= nim / email mahasiswa
+	 * - bill 	= id tagihan  
 	 * 
 	 * @return array 
 	 */
-	public function getInfo( $token = null )
+	public function getInfo( array $request = [] )
 	{
 		$builder = $this->db->table( $this->table );
 
@@ -65,10 +67,16 @@ class TagihanMahasiswa extends Model
 			"tagihan.is_lunas",
 		]);
 
-		if( $token != null ) {
-			$builder->where( "{$this->table}.nim_mahasiswa", $token );
-			$builder->orWhere( "mahasiswa.email", $token );
+		if( isset( $request["token"] ) ) {
+			$builder->where( "{$this->table}.nim_mahasiswa", $request["token"] );
 		}
+		if( isset( $request["bill"] ) ) {
+			$builder->where( "{$this->table}.id_tagihan", $request["bill"] );
+		}
+		if( isset( $request["token"] ) ) {
+			$builder->orWhere( "mahasiswa.email", $request["token"] );
+		}
+
 
 		$builder->join( "mahasiswa", "mahasiswa.nim = {$this->table}.nim_mahasiswa" );
 		$builder->join( "tagihan", "tagihan.id = {$this->table}.id_tagihan" );

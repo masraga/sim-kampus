@@ -14,10 +14,10 @@ class FinancialRecord
 	private static $instance = null;
 
 	/**
-	 * nim mahasiswa
-	 * @var null
+	 * request client
+	 * @var array
 	 */
-	private $userToken = null;
+	private $request = [];
 
 	/**
 	 * model tagihan mahasiswa
@@ -49,12 +49,22 @@ class FinancialRecord
 	/**
 	 * mengatur nim mahasiswa
 	 *
-	 * @param string 	$token 	nim mahasiswa
+	 * @param array $request
 	 */
-	public function setToken( $token )
+	public function setRequest( $request )
 	{
-		$this->userToken = $token;
+		$this->request = $request;
 		return $this;
+	}
+
+	/**
+	 * mengambil parameter request dari client
+	 * 
+	 * @return array
+	 */
+	public function getRequest()
+	{
+		return $this->request;
 	}
 
 	/**
@@ -81,7 +91,7 @@ class FinancialRecord
 	 */
 	private function getPersonalInfo()
 	{
-		$tagihan = $this->mahasiswa->getInfo( $this->userToken );
+		$tagihan = $this->mahasiswa->getInfo( $this->request );
 		$tagihan = $this->formatingInfoResult( $tagihan );
 
 		return [
@@ -129,7 +139,7 @@ class FinancialRecord
 	 */
 	public function list()
 	{
-		if( $this->userToken != null ) 
+		if( ! empty( $this->request ) ) 
 			return $this->getPersonalInfo();
 
 		return $this->getAllInfo(); 

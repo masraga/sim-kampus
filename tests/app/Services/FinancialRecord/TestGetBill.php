@@ -6,60 +6,37 @@ use \App\Services\Tagihan\FinancialRecord;
 
 class TestGetBill extends CIUnitTestCase
 {
-	private function setNim() 
+	public function testGetWithAllRequest()
 	{
-		return "1955201056";
-	}
-
-	private function setEmail()
-	{
-		return "real.ragamulia@gmail.com";
-	}
-
-	public function testGetByNim()
-	{
+		$testNim = 1955201056;
 		$instance  = FinancialRecord::getInstance(); 
 
 		$reflector = new \ReflectionClass( "\\App\\Services\\Tagihan\\FinancialRecord" );
 		
-		$userToken = $reflector->getProperty( "userToken" );
-		$getPersonalInfo = $reflector->getMethod( "getPersonalInfo" );
+		$clientRequest   = $reflector->getProperty( "request" );
 		
-		$userToken->setAccessible( true );
-		$getPersonalInfo->setAccessible( true );
+		$clientRequest->setAccessible( true );
 
-		$userToken->setValue( $instance,  $this->setNim() );
+		$clientRequest->setValue( $instance,  array(
+			"nim"   => $testNim,
+			"email" => "real.ragamulia@gmail.com",
+			"bill"  => 3
+		) );
 		
-		$info = $getPersonalInfo->invokeArgs( $instance, [] );
-		$info = $info["data"][0]["nim_mahasiswa"]; 
+		$requestList = $reflector->getMethod( "getRequest" )
+		->invokeArgs( $instance, [] );
 
-		$expect = $this->setNim();
-		$result = $info;
+		$this->assertIsArray( $requestList );
+		$this->assertEquals( 3, count( $requestList ) );
 
-		$this->assertSame( $expect, $result, json_encode( $info ) );
-	}
+		$queryResult = $reflector->getMethod( "list" )->invokeArgs( $instance, [] );
 
-	public function testGetByEmail()
-	{
-		$instance  = FinancialRecord::getInstance(); 
+		$this->assertIsArray( $queryResult );
+		$this->assertEquals( 3, count( $queryResult ) );
+		$this->assertEquals( 200, $queryResult["code"] );
+		$this->assertIsArray( $queryResult["data"] );
+		$this->assertEquals( $testNim, $queryResult["data"][0]["nim_mahasiswa"] );
 
-		$reflector = new \ReflectionClass( "\\App\\Services\\Tagihan\\FinancialRecord" );
-		
-		$userToken = $reflector->getProperty( "userToken" );
-		$getPersonalInfo = $reflector->getMethod( "getPersonalInfo" );
-		
-		$userToken->setAccessible( true );
-		$getPersonalInfo->setAccessible( true );
-
-		$userToken->setValue( $instance,  $this->setEmail() );
-		
-		$info = $getPersonalInfo->invokeArgs( $instance, [] );
-		$info = $info["data"][0]["email"]; 
-
-		$expect = $this->setEmail();
-		$result = $info;
-
-		$this->assertSame( $expect, $result, json_encode( $info ) );
 	}
 }
 
