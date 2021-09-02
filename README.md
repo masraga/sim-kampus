@@ -26,3 +26,18 @@ SIM kampus adalah aplikasi berbasis codeigniter 4, yang mana didalamnya terdapat
     php spark serve
     ```
 * biasanya akan muncul `CodeIgniter development server started on http://localhost:8080`, lalu buka browser dan ketikkan `http://localhost:8080`
+
+## Pemakaian aplikasi
+Aplikasi ini pada dasarnya memiliki 3 role yaitu admin, bendahara, mahasiswa. Adapun beberapa user credential yang dapat digunakan adalah :
+
+**admin**
+email       : admin@gmail.com
+password    : admin
+
+**bendahara**
+email       : bendahara@gmail.com
+password    : bendahara
+
+**mahasiswa**
+email       : real.ragamulia@gmail.com
+password    : raga
