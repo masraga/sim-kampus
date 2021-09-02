@@ -41,3 +41,5 @@ password    : bendahara
 **mahasiswa**
 email       : real.ragamulia@gmail.com
 password    : raga
+
+**Note :** Jika kamu mengubah base url di sistem ci4 , maka kamu juga harus mensinkronkan base url baru tersebut di `public/url-helper.js`
