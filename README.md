@@ -45,5 +45,4 @@ password    : raga <br>
 
 **Note :** Jika kamu mengubah base url di sistem ci4 , maka kamu juga harus mensinkronkan base url baru tersebut di `public/url-helper.js`
 
-Untuk alur sistem dan penjelasan beberapa kode , dapat mengunjungi link dibawah ini
-https://youtu.be/rPCtWdHhBvk
+[Lihat video penjelasan instalasi, alur sistem , penjelasan code , dll](https://youtu.be/rPCtWdHhBvk)
